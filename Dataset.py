@@ -12,14 +12,15 @@ class Dataset(object):
     classdocs
     '''
 
-    def __init__(self, path):
+    def __init__(self, path, use_recall_precision):
         '''
         Constructor
         '''
         self.trainMatrix = self.load_rating_file_as_matrix(path + ".train.rating")
-        self.testRatings = self.load_rating_file_as_list(path + ".test.rating")
+        if not use_recall_precision: self.testRatings = self.load_rating_file_as_list(path + ".test.rating")
+        else: self.testRatings = self.load_rating_file_as_list_multi(path + ".test.rating")
         self.testNegatives = self.load_negative_file(path + ".test.negative")
-        assert len(self.testRatings) == len(self.testNegatives)
+        if not use_recall_precision: assert len(self.testRatings) == len(self.testNegatives)
         
         self.num_users, self.num_items = self.trainMatrix.shape
         
@@ -73,3 +74,18 @@ class Dataset(object):
                     mat[user, item] = 1.0
                 line = f.readline()    
         return mat
+
+    def load_rating_file_as_list_multi(self, filename):
+        ratingList = []
+        user_item_map = {}
+        with open(filename, "r") as f:
+            line = f.readline()
+            while line != None and line != "":
+                arr = line.split("\t")
+                user, item = int(arr[0]), int(arr[1])
+                if user in user_item_map: user_item_map[user] += [item]
+                else: user_item_map[user] = [item]
+                line = f.readline()
+        for user in user_item_map:
+            ratingList.append([user] + user_item_map[user])
+        return ratingList

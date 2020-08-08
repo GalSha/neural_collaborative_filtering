@@ -1,3 +1,6 @@
+import os;
+os.environ['KERAS_BACKEND'] = 'theano'
+os.environ['THEANO_FLAGS'] ='device=cuda' #,floatX=float32'
 '''
 Created on Aug 9, 2016
 Keras Implementation of Neural Matrix Factorization (NeuMF) recommender model in:
@@ -17,7 +20,7 @@ from keras.models import Sequential, Model
 from keras.layers.core import Dense, Lambda, Activation
 from keras.layers import Embedding, Input, Dense, merge, Reshape, Merge, Flatten, Dropout
 from keras.optimizers import Adagrad, Adam, SGD, RMSprop
-from evaluate import evaluate_model
+from evaluate import evaluate_model, evaluate_model_recall_precision
 from Dataset import Dataset
 from time import time
 import sys
@@ -57,6 +60,14 @@ def parse_args():
                         help='Specify the pretrain model file for MF part. If empty, no pretrain will be used')
     parser.add_argument('--mlp_pretrain', nargs='?', default='',
                         help='Specify the pretrain model file for MLP part. If empty, no pretrain will be used')
+    parser.add_argument('--recall_precision', action='store_true', default=False,
+                        help='use recall_precision eval.')
+    parser.add_argument('--topK', type=int, default=10,
+                        help='K parameter for hr-ndcg eval.')
+    parser.add_argument('--recallK', type=int, default=300,
+                        help='K parameter for recall.')
+    parser.add_argument('--precisionK', type=int, default=500,
+                        help='K parameter for precision.')
     return parser.parse_args()
 
 def init_normal(shape, name=None):
@@ -89,7 +100,7 @@ def get_model(num_users, num_items, mf_dim=10, layers=[10], reg_layers=[0], reg_
     mlp_user_latent = Flatten()(MLP_Embedding_User(user_input))
     mlp_item_latent = Flatten()(MLP_Embedding_Item(item_input))
     mlp_vector = merge([mlp_user_latent, mlp_item_latent], mode = 'concat')
-    for idx in xrange(1, num_layer):
+    for idx in range(1, num_layer):
         layer = Dense(layers[idx], W_regularizer= l2(reg_layers[idx]), activation='relu', name="layer%d" %idx)
         mlp_vector = layer(mlp_vector)
 
@@ -120,7 +131,7 @@ def load_pretrain_model(model, gmf_model, mlp_model, num_layers):
     model.get_layer('mlp_embedding_item').set_weights(mlp_item_embeddings)
     
     # MLP layers
-    for i in xrange(1, num_layers):
+    for i in range(1, num_layers):
         mlp_layer_weights = mlp_model.get_layer('layer%d' %i).get_weights()
         model.get_layer('layer%d' %i).set_weights(mlp_layer_weights)
         
@@ -141,7 +152,7 @@ def get_train_instances(train, num_negatives):
         item_input.append(i)
         labels.append(1)
         # negative instances
-        for t in xrange(num_negatives):
+        for t in range(num_negatives):
             j = np.random.randint(num_items)
             while train.has_key((u, j)):
                 j = np.random.randint(num_items)
@@ -164,15 +175,18 @@ if __name__ == '__main__':
     verbose = args.verbose
     mf_pretrain = args.mf_pretrain
     mlp_pretrain = args.mlp_pretrain
-            
-    topK = 10
+    use_recall_precision = args.recall_precision
+    topK = args.topK
+    recallK = args.recallK
+    precisionK = args.precisionK
+
     evaluation_threads = 1#mp.cpu_count()
     print("NeuMF arguments: %s " %(args))
     model_out_file = 'Pretrain/%s_NeuMF_%d_%s_%d.h5' %(args.dataset, mf_dim, args.layers, time())
 
     # Loading data
     t1 = time()
-    dataset = Dataset(args.path + args.dataset)
+    dataset = Dataset(args.path + args.dataset, use_recall_precision)
     train, testRatings, testNegatives = dataset.trainMatrix, dataset.testRatings, dataset.testNegatives
     num_users, num_items = train.shape
     print("Load data done [%.1f s]. #user=%d, #item=%d, #train=%d, #test=%d" 
@@ -197,17 +211,30 @@ if __name__ == '__main__':
         mlp_model.load_weights(mlp_pretrain)
         model = load_pretrain_model(model, gmf_model, mlp_model, len(layers))
         print("Load pretrained GMF (%s) and MLP (%s) models done. " %(mf_pretrain, mlp_pretrain))
-        
+
     # Init performance
-    (hits, ndcgs) = evaluate_model(model, testRatings, testNegatives, topK, evaluation_threads)
-    hr, ndcg = np.array(hits).mean(), np.array(ndcgs).mean()
-    print('Init: HR = %.4f, NDCG = %.4f' % (hr, ndcg))
-    best_hr, best_ndcg, best_iter = hr, ndcg, -1
+    t1 = time()
+    if use_recall_precision:
+        (recalls, precisions) = evaluate_model_recall_precision(model, num_items, testRatings, recallK, precisionK,
+                                                                evaluation_threads)
+        recall, precision = np.array(recalls).mean(), np.array(precisions).mean()
+        print('Init: Recall = %.4f, Precision = %.4f\t [%.1f s]' % (recall, precision, time() - t1))
+    else:
+        (hits, ndcgs) = evaluate_model(model, testRatings, testNegatives, topK, evaluation_threads)
+        hr, ndcg = np.array(hits).mean(), np.array(ndcgs).mean()
+        # mf_embedding_norm = np.linalg.norm(model.get_layer('user_embedding').get_weights())+np.linalg.norm(model.get_layer('item_embedding').get_weights())
+        # p_norm = np.linalg.norm(model.get_layer('prediction').get_weights()[0])
+        print('Init: HR = %.4f, NDCG = %.4f\t [%.1f s]' % (hr, ndcg, time() - t1))
+
+    if use_recall_precision:
+        best_recall, best_precision, best_iter = recall, precision, -1
+    else:
+        best_hr, best_ndcg, best_iter = hr, ndcg, -1
     if args.out > 0:
         model.save_weights(model_out_file, overwrite=True) 
         
     # Training model
-    for epoch in xrange(num_epochs):
+    for epoch in range(num_epochs):
         t1 = time()
         # Generate training instances
         user_input, item_input, labels = get_train_instances(train, num_negatives)
@@ -217,18 +244,33 @@ if __name__ == '__main__':
                          np.array(labels), # labels 
                          batch_size=batch_size, nb_epoch=1, verbose=0, shuffle=True)
         t2 = time()
-        
-        # Evaluation
-        if epoch %verbose == 0:
-            (hits, ndcgs) = evaluate_model(model, testRatings, testNegatives, topK, evaluation_threads)
-            hr, ndcg, loss = np.array(hits).mean(), np.array(ndcgs).mean(), hist.history['loss'][0]
-            print('Iteration %d [%.1f s]: HR = %.4f, NDCG = %.4f, loss = %.4f [%.1f s]' 
-                  % (epoch,  t2-t1, hr, ndcg, loss, time()-t2))
-            if hr > best_hr:
-                best_hr, best_ndcg, best_iter = hr, ndcg, epoch
-                if args.out > 0:
-                    model.save_weights(model_out_file, overwrite=True)
 
-    print("End. Best Iteration %d:  HR = %.4f, NDCG = %.4f. " %(best_iter, best_hr, best_ndcg))
+        # Evaluation
+        if epoch % verbose == 0:
+            loss = hist.history['loss'][0]
+            if use_recall_precision:
+                (recalls, precisions) = evaluate_model_recall_precision(model, num_items, testRatings, recallK,
+                                                                        precisionK, evaluation_threads)
+                recall, precision = np.array(recalls).mean(), np.array(precisions).mean()
+                print('Iteration %d [%.1f s]: Recall = %.4f, Precision = %.4f, loss = %.4f [%.1f s]'
+                      % (epoch, t2 - t1, recall, precision, loss, time() - t2))
+                if recall > best_recall:
+                    best_recall, best_precision, best_iter = recall, precision, epoch
+                    if args.out > 0:
+                        model.save_weights(model_out_file, overwrite=True)
+            else:
+                (hits, ndcgs) = evaluate_model(model, testRatings, testNegatives, topK, evaluation_threads)
+                hr, ndcg = np.array(hits).mean(), np.array(ndcgs).mean()
+                print('Iteration %d [%.1f s]: HR = %.4f, NDCG = %.4f, loss = %.4f [%.1f s]'
+                      % (epoch, t2 - t1, hr, ndcg, loss, time() - t2))
+                if hr > best_hr:
+                    best_hr, best_ndcg, best_iter = hr, ndcg, epoch
+                    if args.out > 0:
+                        model.save_weights(model_out_file, overwrite=True)
+
+    if use_recall_precision:
+        print("End. Best Iteration %d:  Recall = %.4f, Precision = %.4f. " % (best_iter, best_recall, best_precision))
+    else:
+        print("End. Best Iteration %d:  HR = %.4f, NDCG = %.4f. " % (best_iter, best_hr, best_ndcg))
     if args.out > 0:
         print("The best NeuMF model is saved to %s" %(model_out_file))
