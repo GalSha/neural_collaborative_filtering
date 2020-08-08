@@ -1,0 +1,25 @@
+GMF arguments: Namespace(batch_size=256, dataset='ctr.precision-recall', epochs=20, learner='adam', lr=0.001, num_factors=8, num_neg=4, out=1, path='Data/', precisionK=500, recallK=300, recall_precision=True, regs='[0,0]', topK=10, verbose=1)
+Load data done [1.6 s]. #user=3277, #item=16979, #train=32770, #test=3277
+Init: Recall = 0.0025, Precision = 0.0170	 [356.4 s]
+Iteration 0 [17.1 s]: Recall = 0.0034, Precision = 0.0263, loss = 0.6189 [39.9 s]
+Iteration 1 [1.9 s]: Recall = 0.0091, Precision = 0.0884, loss = 0.5352 [39.0 s]
+Iteration 2 [2.0 s]: Recall = 0.0123, Precision = 0.1179, loss = 0.4921 [38.1 s]
+Iteration 3 [2.0 s]: Recall = 0.0131, Precision = 0.1268, loss = 0.4410 [37.6 s]
+Iteration 4 [1.8 s]: Recall = 0.0135, Precision = 0.1299, loss = 0.3878 [37.6 s]
+Iteration 5 [2.0 s]: Recall = 0.0135, Precision = 0.1294, loss = 0.3432 [37.5 s]
+Iteration 6 [1.9 s]: Recall = 0.0133, Precision = 0.1277, loss = 0.3065 [37.6 s]
+Iteration 7 [1.8 s]: Recall = 0.0131, Precision = 0.1254, loss = 0.2759 [37.8 s]
+Iteration 8 [1.8 s]: Recall = 0.0129, Precision = 0.1228, loss = 0.2512 [38.0 s]
+Iteration 9 [2.0 s]: Recall = 0.0127, Precision = 0.1212, loss = 0.2301 [40.8 s]
+Iteration 10 [1.9 s]: Recall = 0.0125, Precision = 0.1189, loss = 0.2139 [39.4 s]
+Iteration 11 [2.2 s]: Recall = 0.0124, Precision = 0.1157, loss = 0.1991 [38.5 s]
+Iteration 12 [1.8 s]: Recall = 0.0122, Precision = 0.1149, loss = 0.1871 [40.0 s]
+Iteration 13 [2.5 s]: Recall = 0.0122, Precision = 0.1137, loss = 0.1752 [40.4 s]
+Iteration 14 [2.3 s]: Recall = 0.0121, Precision = 0.1120, loss = 0.1669 [40.4 s]
+Iteration 15 [2.0 s]: Recall = 0.0121, Precision = 0.1108, loss = 0.1587 [40.1 s]
+Iteration 16 [1.9 s]: Recall = 0.0120, Precision = 0.1105, loss = 0.1531 [40.0 s]
+Iteration 17 [1.8 s]: Recall = 0.0120, Precision = 0.1116, loss = 0.1469 [38.7 s]
+Iteration 18 [1.8 s]: Recall = 0.0120, Precision = 0.1112, loss = 0.1416 [38.7 s]
+Iteration 19 [1.8 s]: Recall = 0.0120, Precision = 0.1108, loss = 0.1361 [39.1 s]
+End. Best Iteration 5:  Recall = 0.0135, Precision = 0.1294. 
+The best GMF model is saved to Pretrain/ctr.precision-recall_GMF_8_1596294085.h5

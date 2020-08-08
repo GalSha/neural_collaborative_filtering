@@ -1,0 +1,25 @@
+NeuMF arguments: Namespace(batch_size=256, dataset='ml-1m.precision-recall', epochs=20, layers='[64,32,16,8]', learner='adam', lr=0.001, mf_pretrain='', mlp_pretrain='', num_factors=8, num_neg=4, out=1, path='Data/', precisionK=500, recallK=300, recall_precision=True, reg_layers='[0,0,0,0]', reg_mf=0.0, topK=10, verbose=1) 
+Load data done [4.6 s]. #user=6040, #item=3952, #train=60400, #test=6040
+Init: Recall = 0.0396, Precision = 0.0857	 [154.6 s]
+Iteration 0 [30.9 s]: Recall = 0.1567, Precision = 0.4923, loss = 0.3885 [32.1 s]
+Iteration 1 [8.2 s]: Recall = 0.1570, Precision = 0.4985, loss = 0.3518 [31.5 s]
+Iteration 2 [7.9 s]: Recall = 0.1565, Precision = 0.5050, loss = 0.3340 [32.0 s]
+Iteration 3 [7.9 s]: Recall = 0.1521, Precision = 0.4983, loss = 0.3059 [32.0 s]
+Iteration 4 [8.2 s]: Recall = 0.1459, Precision = 0.4857, loss = 0.2783 [32.2 s]
+Iteration 5 [8.0 s]: Recall = 0.1406, Precision = 0.4723, loss = 0.2577 [31.7 s]
+Iteration 6 [8.1 s]: Recall = 0.1360, Precision = 0.4611, loss = 0.2402 [32.0 s]
+Iteration 7 [8.0 s]: Recall = 0.1344, Precision = 0.4559, loss = 0.2238 [31.7 s]
+Iteration 8 [8.1 s]: Recall = 0.1298, Precision = 0.4381, loss = 0.2089 [32.1 s]
+Iteration 9 [8.3 s]: Recall = 0.1287, Precision = 0.4370, loss = 0.1947 [32.0 s]
+Iteration 10 [8.8 s]: Recall = 0.1329, Precision = 0.4486, loss = 0.1811 [32.1 s]
+Iteration 11 [9.1 s]: Recall = 0.1312, Precision = 0.4402, loss = 0.1703 [31.8 s]
+Iteration 12 [9.6 s]: Recall = 0.1327, Precision = 0.4434, loss = 0.1608 [31.8 s]
+Iteration 13 [10.0 s]: Recall = 0.1305, Precision = 0.4367, loss = 0.1526 [32.3 s]
+Iteration 14 [10.3 s]: Recall = 0.1323, Precision = 0.4431, loss = 0.1440 [32.0 s]
+Iteration 15 [10.4 s]: Recall = 0.1332, Precision = 0.4429, loss = 0.1375 [31.9 s]
+Iteration 16 [10.5 s]: Recall = 0.1327, Precision = 0.4413, loss = 0.1314 [31.9 s]
+Iteration 17 [10.8 s]: Recall = 0.1331, Precision = 0.4424, loss = 0.1264 [31.9 s]
+Iteration 18 [11.0 s]: Recall = 0.1332, Precision = 0.4436, loss = 0.1199 [32.4 s]
+Iteration 19 [11.1 s]: Recall = 0.1361, Precision = 0.4540, loss = 0.1161 [31.6 s]
+End. Best Iteration 1:  Recall = 0.1570, Precision = 0.4985. 
+The best NeuMF model is saved to Pretrain/ml-1m.precision-recall_NeuMF_8_[64,32,16,8]_1596302142.h5

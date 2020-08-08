@@ -1,0 +1,25 @@
+MLP arguments: Namespace(batch_size=256, dataset='last.fm.hr-ndcg', epochs=20, layers='[64,32,16,8]', learner='adam', lr=0.001, num_neg=4, out=1, path='Data/', precisionK=500, recallK=300, recall_precision=False, reg_layers='[0,0,0,0]', topK=10, verbose=1) 
+Load data done [1.6 s]. #user=1860, #item=17632, #train=90741, #test=1860
+Init: HR = 0.0973, NDCG = 0.0428	 [281.6 s]
+Iteration 0 [79.2 s]: HR = 0.6624, NDCG = 0.4549, loss = 0.3522 [0.8 s]
+Iteration 1 [8.7 s]: HR = 0.6769, NDCG = 0.4770, loss = 0.3090 [0.7 s]
+Iteration 2 [8.7 s]: HR = 0.6914, NDCG = 0.4987, loss = 0.2921 [0.8 s]
+Iteration 3 [8.8 s]: HR = 0.7005, NDCG = 0.5129, loss = 0.2709 [1.2 s]
+Iteration 4 [8.8 s]: HR = 0.7081, NDCG = 0.5191, loss = 0.2546 [0.7 s]
+Iteration 5 [8.7 s]: HR = 0.7145, NDCG = 0.5211, loss = 0.2387 [0.8 s]
+Iteration 6 [8.8 s]: HR = 0.7204, NDCG = 0.5288, loss = 0.2230 [0.8 s]
+Iteration 7 [8.8 s]: HR = 0.7183, NDCG = 0.5291, loss = 0.2090 [0.8 s]
+Iteration 8 [9.0 s]: HR = 0.7183, NDCG = 0.5350, loss = 0.1953 [0.8 s]
+Iteration 9 [9.1 s]: HR = 0.7151, NDCG = 0.5334, loss = 0.1818 [1.0 s]
+Iteration 10 [9.3 s]: HR = 0.7215, NDCG = 0.5328, loss = 0.1669 [0.8 s]
+Iteration 11 [10.0 s]: HR = 0.7210, NDCG = 0.5359, loss = 0.1548 [0.8 s]
+Iteration 12 [10.5 s]: HR = 0.7269, NDCG = 0.5370, loss = 0.1442 [1.2 s]
+Iteration 13 [11.4 s]: HR = 0.7237, NDCG = 0.5370, loss = 0.1345 [0.8 s]
+Iteration 14 [12.1 s]: HR = 0.7242, NDCG = 0.5503, loss = 0.1250 [0.9 s]
+Iteration 15 [13.3 s]: HR = 0.7247, NDCG = 0.5407, loss = 0.1175 [0.8 s]
+Iteration 16 [14.4 s]: HR = 0.7301, NDCG = 0.5471, loss = 0.1110 [0.7 s]
+Iteration 17 [15.5 s]: HR = 0.7285, NDCG = 0.5493, loss = 0.1059 [0.8 s]
+Iteration 18 [16.6 s]: HR = 0.7344, NDCG = 0.5496, loss = 0.1017 [0.8 s]
+Iteration 19 [17.9 s]: HR = 0.7398, NDCG = 0.5563, loss = 0.0967 [0.8 s]
+End. Best Iteration 19:  HR = 0.7398, NDCG = 0.5563. 
+The best MLP model is saved to Pretrain/last.fm.hr-ndcg_MLP_[64,32,16,8]_1596294754.h5

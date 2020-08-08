@@ -1,0 +1,25 @@
+NeuMF arguments: Namespace(batch_size=256, dataset='ctr.hr-ndcg', epochs=20, layers='[64,32,16,8]', learner='adam', lr=0.001, mf_pretrain='', mlp_pretrain='', num_factors=8, num_neg=4, out=1, path='Data/', precisionK=500, recallK=300, recall_precision=False, reg_layers='[0,0,0,0]', reg_mf=0.0, topK=10, verbose=1) 
+Load data done [4.9 s]. #user=3277, #item=16980, #train=174785, #test=3277
+Init: HR = 0.0955, NDCG = 0.0438	 [159.0 s]
+Iteration 0 [60.6 s]: HR = 0.4394, NDCG = 0.2668, loss = 0.4566 [1.1 s]
+Iteration 1 [39.6 s]: HR = 0.6424, NDCG = 0.4130, loss = 0.3288 [1.2 s]
+Iteration 2 [39.6 s]: HR = 0.7348, NDCG = 0.4861, loss = 0.2484 [1.1 s]
+Iteration 3 [39.6 s]: HR = 0.7772, NDCG = 0.5230, loss = 0.2072 [1.2 s]
+Iteration 4 [39.5 s]: HR = 0.7958, NDCG = 0.5379, loss = 0.1832 [1.2 s]
+Iteration 5 [39.6 s]: HR = 0.8074, NDCG = 0.5514, loss = 0.1642 [1.2 s]
+Iteration 6 [39.6 s]: HR = 0.8062, NDCG = 0.5522, loss = 0.1503 [1.5 s]
+Iteration 7 [39.7 s]: HR = 0.8175, NDCG = 0.5653, loss = 0.1377 [1.6 s]
+Iteration 8 [40.0 s]: HR = 0.8132, NDCG = 0.5636, loss = 0.1278 [1.5 s]
+Iteration 9 [40.4 s]: HR = 0.8151, NDCG = 0.5646, loss = 0.1186 [1.6 s]
+Iteration 10 [41.2 s]: HR = 0.8111, NDCG = 0.5667, loss = 0.1113 [1.5 s]
+Iteration 11 [41.6 s]: HR = 0.8157, NDCG = 0.5685, loss = 0.1055 [1.6 s]
+Iteration 12 [45.2 s]: HR = 0.8111, NDCG = 0.5679, loss = 0.0988 [1.6 s]
+Iteration 13 [45.1 s]: HR = 0.8105, NDCG = 0.5644, loss = 0.0944 [1.6 s]
+Iteration 14 [46.3 s]: HR = 0.8151, NDCG = 0.5703, loss = 0.0888 [1.6 s]
+Iteration 15 [45.8 s]: HR = 0.8123, NDCG = 0.5632, loss = 0.0866 [1.6 s]
+Iteration 16 [44.7 s]: HR = 0.8074, NDCG = 0.5667, loss = 0.0825 [1.5 s]
+Iteration 17 [45.3 s]: HR = 0.8081, NDCG = 0.5654, loss = 0.0796 [1.5 s]
+Iteration 18 [46.1 s]: HR = 0.8050, NDCG = 0.5639, loss = 0.0762 [1.5 s]
+Iteration 19 [47.3 s]: HR = 0.8099, NDCG = 0.5737, loss = 0.0731 [1.6 s]
+End. Best Iteration 7:  HR = 0.8175, NDCG = 0.5653. 
+The best NeuMF model is saved to Pretrain/ctr.hr-ndcg_NeuMF_8_[64,32,16,8]_1596297566.h5

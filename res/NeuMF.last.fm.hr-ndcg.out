@@ -1,0 +1,25 @@
+NeuMF arguments: Namespace(batch_size=256, dataset='last.fm.hr-ndcg', epochs=20, layers='[64,32,16,8]', learner='adam', lr=0.001, mf_pretrain='', mlp_pretrain='', num_factors=8, num_neg=4, out=1, path='Data/', precisionK=500, recallK=300, recall_precision=False, reg_layers='[0,0,0,0]', reg_mf=0.0, topK=10, verbose=1) 
+Load data done [1.6 s]. #user=1860, #item=17632, #train=90741, #test=1860
+Init: HR = 0.1124, NDCG = 0.0517	 [228.4 s]
+Iteration 0 [40.7 s]: HR = 0.6656, NDCG = 0.4686, loss = 0.3486 [0.9 s]
+Iteration 1 [10.5 s]: HR = 0.7102, NDCG = 0.5376, loss = 0.2906 [0.9 s]
+Iteration 2 [10.5 s]: HR = 0.7419, NDCG = 0.5732, loss = 0.2418 [1.0 s]
+Iteration 3 [10.5 s]: HR = 0.7489, NDCG = 0.5832, loss = 0.2008 [1.0 s]
+Iteration 4 [10.5 s]: HR = 0.7554, NDCG = 0.5899, loss = 0.1676 [1.0 s]
+Iteration 5 [10.6 s]: HR = 0.7478, NDCG = 0.5877, loss = 0.1430 [0.9 s]
+Iteration 6 [10.6 s]: HR = 0.7462, NDCG = 0.5876, loss = 0.1243 [0.9 s]
+Iteration 7 [10.7 s]: HR = 0.7441, NDCG = 0.5832, loss = 0.1098 [1.0 s]
+Iteration 8 [11.3 s]: HR = 0.7419, NDCG = 0.5842, loss = 0.0972 [0.9 s]
+Iteration 9 [11.7 s]: HR = 0.7419, NDCG = 0.5835, loss = 0.0896 [0.9 s]
+Iteration 10 [12.6 s]: HR = 0.7478, NDCG = 0.5847, loss = 0.0820 [0.9 s]
+Iteration 11 [14.0 s]: HR = 0.7505, NDCG = 0.5830, loss = 0.0763 [0.9 s]
+Iteration 12 [15.2 s]: HR = 0.7495, NDCG = 0.5841, loss = 0.0722 [1.0 s]
+Iteration 13 [16.6 s]: HR = 0.7559, NDCG = 0.5860, loss = 0.0682 [0.9 s]
+Iteration 14 [17.7 s]: HR = 0.7527, NDCG = 0.5860, loss = 0.0657 [1.0 s]
+Iteration 15 [20.5 s]: HR = 0.7548, NDCG = 0.5873, loss = 0.0623 [0.9 s]
+Iteration 16 [23.0 s]: HR = 0.7527, NDCG = 0.5868, loss = 0.0592 [1.0 s]
+Iteration 17 [24.7 s]: HR = 0.7511, NDCG = 0.5851, loss = 0.0587 [1.1 s]
+Iteration 18 [27.3 s]: HR = 0.7484, NDCG = 0.5863, loss = 0.0554 [0.9 s]
+Iteration 19 [29.4 s]: HR = 0.7478, NDCG = 0.5841, loss = 0.0545 [1.0 s]
+End. Best Iteration 13:  HR = 0.7559, NDCG = 0.5860. 
+The best NeuMF model is saved to Pretrain/last.fm.hr-ndcg_NeuMF_8_[64,32,16,8]_1596296138.h5

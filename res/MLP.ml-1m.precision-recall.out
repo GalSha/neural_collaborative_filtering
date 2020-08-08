@@ -1,0 +1,25 @@
+MLP arguments: Namespace(batch_size=256, dataset='ml-1m.precision-recall', epochs=20, layers='[64,32,16,8]', learner='adam', lr=0.001, num_neg=4, out=1, path='Data/', precisionK=500, recallK=300, recall_precision=True, reg_layers='[0,0,0,0]', topK=10, verbose=1) 
+Load data done [4.5 s]. #user=6040, #item=3952, #train=60400, #test=6040
+Init: Recall = 0.0390, Precision = 0.0873	 [120.3 s]
+Iteration 0 [26.8 s]: Recall = 0.1567, Precision = 0.4919, loss = 0.3889 [30.8 s]
+Iteration 1 [6.6 s]: Recall = 0.1584, Precision = 0.4936, loss = 0.3525 [30.8 s]
+Iteration 2 [6.6 s]: Recall = 0.1581, Precision = 0.4960, loss = 0.3458 [30.7 s]
+Iteration 3 [6.6 s]: Recall = 0.1565, Precision = 0.4972, loss = 0.3383 [30.6 s]
+Iteration 4 [6.6 s]: Recall = 0.1536, Precision = 0.4900, loss = 0.3310 [30.9 s]
+Iteration 5 [6.6 s]: Recall = 0.1509, Precision = 0.4872, loss = 0.3209 [32.0 s]
+Iteration 6 [7.0 s]: Recall = 0.1421, Precision = 0.4644, loss = 0.3104 [31.8 s]
+Iteration 7 [6.9 s]: Recall = 0.1391, Precision = 0.4612, loss = 0.2982 [32.0 s]
+Iteration 8 [7.3 s]: Recall = 0.1346, Precision = 0.4489, loss = 0.2841 [31.5 s]
+Iteration 9 [7.4 s]: Recall = 0.1360, Precision = 0.4503, loss = 0.2702 [31.3 s]
+Iteration 10 [7.6 s]: Recall = 0.1307, Precision = 0.4311, loss = 0.2574 [31.4 s]
+Iteration 11 [8.0 s]: Recall = 0.1298, Precision = 0.4282, loss = 0.2432 [31.1 s]
+Iteration 12 [8.3 s]: Recall = 0.1293, Precision = 0.4255, loss = 0.2318 [31.2 s]
+Iteration 13 [8.7 s]: Recall = 0.1308, Precision = 0.4276, loss = 0.2201 [31.2 s]
+Iteration 14 [8.7 s]: Recall = 0.1299, Precision = 0.4179, loss = 0.2097 [30.9 s]
+Iteration 15 [8.7 s]: Recall = 0.1318, Precision = 0.4288, loss = 0.2014 [31.4 s]
+Iteration 16 [9.1 s]: Recall = 0.1322, Precision = 0.4288, loss = 0.1934 [31.1 s]
+Iteration 17 [9.1 s]: Recall = 0.1320, Precision = 0.4288, loss = 0.1859 [31.3 s]
+Iteration 18 [9.2 s]: Recall = 0.1339, Precision = 0.4363, loss = 0.1787 [31.0 s]
+Iteration 19 [9.2 s]: Recall = 0.1322, Precision = 0.4309, loss = 0.1730 [31.5 s]
+End. Best Iteration 1:  Recall = 0.1584, Precision = 0.4936. 
+The best MLP model is saved to Pretrain/ml-1m.precision-recall_MLP_[64,32,16,8]_1596298277.h5

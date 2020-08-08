@@ -1,0 +1,25 @@
+GMF arguments: Namespace(batch_size=256, dataset='last.fm.hr-ndcg', epochs=20, learner='adam', lr=0.001, num_factors=8, num_neg=4, out=1, path='Data/', precisionK=500, recallK=300, recall_precision=False, regs='[0,0]', topK=10, verbose=1)
+Load data done [1.7 s]. #user=1860, #item=17632, #train=90741, #test=1860
+Init: HR = 0.1005, NDCG = 0.0490	 [406.5 s]
+Iteration 0 [25.5 s]: HR = 0.6661, NDCG = 0.4695, loss = 0.4940 [0.8 s]
+Iteration 1 [2.7 s]: HR = 0.6806, NDCG = 0.5000, loss = 0.3096 [0.9 s]
+Iteration 2 [2.7 s]: HR = 0.7081, NDCG = 0.5249, loss = 0.2823 [0.9 s]
+Iteration 3 [2.7 s]: HR = 0.7226, NDCG = 0.5377, loss = 0.2639 [0.9 s]
+Iteration 4 [2.7 s]: HR = 0.7296, NDCG = 0.5441, loss = 0.2520 [0.9 s]
+Iteration 5 [2.7 s]: HR = 0.7349, NDCG = 0.5432, loss = 0.2418 [0.9 s]
+Iteration 6 [2.7 s]: HR = 0.7323, NDCG = 0.5461, loss = 0.2322 [0.9 s]
+Iteration 7 [2.7 s]: HR = 0.7328, NDCG = 0.5532, loss = 0.2231 [0.9 s]
+Iteration 8 [2.7 s]: HR = 0.7371, NDCG = 0.5549, loss = 0.2125 [0.9 s]
+Iteration 9 [2.7 s]: HR = 0.7441, NDCG = 0.5560, loss = 0.2017 [0.9 s]
+Iteration 10 [2.7 s]: HR = 0.7457, NDCG = 0.5624, loss = 0.1907 [0.9 s]
+Iteration 11 [2.7 s]: HR = 0.7462, NDCG = 0.5666, loss = 0.1797 [0.9 s]
+Iteration 12 [2.7 s]: HR = 0.7452, NDCG = 0.5683, loss = 0.1707 [0.9 s]
+Iteration 13 [2.7 s]: HR = 0.7414, NDCG = 0.5645, loss = 0.1616 [0.9 s]
+Iteration 14 [2.7 s]: HR = 0.7425, NDCG = 0.5651, loss = 0.1553 [0.9 s]
+Iteration 15 [2.7 s]: HR = 0.7452, NDCG = 0.5667, loss = 0.1496 [0.9 s]
+Iteration 16 [2.7 s]: HR = 0.7435, NDCG = 0.5680, loss = 0.1441 [0.9 s]
+Iteration 17 [2.7 s]: HR = 0.7452, NDCG = 0.5670, loss = 0.1388 [0.9 s]
+Iteration 18 [2.7 s]: HR = 0.7473, NDCG = 0.5704, loss = 0.1362 [0.9 s]
+Iteration 19 [2.7 s]: HR = 0.7398, NDCG = 0.5689, loss = 0.1319 [0.9 s]
+End. Best Iteration 18:  HR = 0.7473, NDCG = 0.5704. 
+The best GMF model is saved to Pretrain/last.fm.hr-ndcg_GMF_8_1596293548.h5

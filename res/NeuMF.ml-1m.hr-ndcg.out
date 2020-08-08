@@ -1,0 +1,25 @@
+NeuMF arguments: Namespace(batch_size=256, dataset='ml-1m.hr-ndcg', epochs=20, layers='[64,32,16,8]', learner='adam', lr=0.001, mf_pretrain='', mlp_pretrain='', num_factors=8, num_neg=4, out=1, path='Data/', precisionK=500, recallK=300, recall_precision=False, reg_layers='[0,0,0,0]', reg_mf=0.0, topK=10, verbose=1) 
+Load data done [25.3 s]. #user=6040, #item=3952, #train=994169, #test=6040
+Init: HR = 0.0969, NDCG = 0.0433	 [165.6 s]
+Iteration 0 [154.0 s]: HR = 0.7374, NDCG = 0.4724, loss = 0.3094 [2.6 s]
+Iteration 1 [132.5 s]: HR = 0.7730, NDCG = 0.5114, loss = 0.2664 [2.6 s]
+Iteration 2 [132.9 s]: HR = 0.7826, NDCG = 0.5226, loss = 0.2569 [2.6 s]
+Iteration 3 [132.7 s]: HR = 0.7987, NDCG = 0.5328, loss = 0.2509 [2.6 s]
+Iteration 4 [132.5 s]: HR = 0.7917, NDCG = 0.5372, loss = 0.2473 [2.5 s]
+Iteration 5 [132.7 s]: HR = 0.7987, NDCG = 0.5410, loss = 0.2437 [2.6 s]
+Iteration 6 [132.5 s]: HR = 0.8051, NDCG = 0.5426, loss = 0.2410 [2.5 s]
+Iteration 7 [132.5 s]: HR = 0.8055, NDCG = 0.5450, loss = 0.2386 [2.5 s]
+Iteration 8 [132.7 s]: HR = 0.8046, NDCG = 0.5482, loss = 0.2368 [2.5 s]
+Iteration 9 [132.8 s]: HR = 0.8051, NDCG = 0.5461, loss = 0.2349 [2.5 s]
+Iteration 10 [132.4 s]: HR = 0.8065, NDCG = 0.5488, loss = 0.2335 [2.9 s]
+Iteration 11 [132.5 s]: HR = 0.8055, NDCG = 0.5489, loss = 0.2316 [1.5 s]
+Iteration 12 [132.7 s]: HR = 0.8081, NDCG = 0.5488, loss = 0.2300 [1.5 s]
+Iteration 13 [132.6 s]: HR = 0.8065, NDCG = 0.5499, loss = 0.2288 [1.5 s]
+Iteration 14 [133.5 s]: HR = 0.8056, NDCG = 0.5473, loss = 0.2277 [1.5 s]
+Iteration 15 [132.5 s]: HR = 0.8098, NDCG = 0.5498, loss = 0.2267 [1.5 s]
+Iteration 16 [132.9 s]: HR = 0.8093, NDCG = 0.5482, loss = 0.2254 [1.8 s]
+Iteration 17 [133.0 s]: HR = 0.8084, NDCG = 0.5476, loss = 0.2247 [1.7 s]
+Iteration 18 [132.8 s]: HR = 0.8081, NDCG = 0.5508, loss = 0.2237 [1.7 s]
+Iteration 19 [132.7 s]: HR = 0.8083, NDCG = 0.5499, loss = 0.2229 [1.5 s]
+End. Best Iteration 15:  HR = 0.8098, NDCG = 0.5498. 
+The best NeuMF model is saved to Pretrain/ml-1m.hr-ndcg_NeuMF_8_[64,32,16,8]_1596299214.h5
